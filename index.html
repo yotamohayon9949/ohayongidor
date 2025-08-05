@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="light-mode">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוחיון גידור - השכרת ומכירת גידור זמני</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Theme Variables */
+        :root {
+            /* Light Mode (Default) */
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #555555;
+            --text-muted: #6c757d;
+            --primary-color: #0d6efd;
+            --accent-color: #ffc107;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+
+            /* Common Variables */
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --bg-primary: #222831;
+            --bg-secondary: #2d333b;
+            --bg-card: #393e46;
+            --text-primary: #eeeeee;
+            --text-secondary: #dddddd;
+            --text-muted: #aaaaaa;
+            --primary-color: #4d96ff;
+            --accent-color: #ffd369;
+            --dark-color: #121212;
+            --light-color: #eeeeee;
+            --border-color: #444444;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Theme Transition */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+		
+		.logo img {
+            height: 40px; /* Adjust height as needed */
+            margin-left: 0.5rem; /* Space between image and text */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            margin-left: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-left: 1.5rem;
+        }
+
+        .nav-links li {
+            margin-right: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            margin-left: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Updated background image for fencing theme */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/ncFzjg0Q/Whats-App-Image-2025-07-23-at-14-30-44.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--bg-secondary);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .testimonial-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author h4 {
+            color: var(--text-primary);
+        }
+
+        .testimonial-author p {
+            color: var(--text-muted);
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 1rem;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: rgba(13, 110, 253, 0.1);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Work Images Gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            transition: .5s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            height: 35%;
+        }
+
+        .gallery-text {
+            color: white;
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            text-align: right;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 10px;
+        }
+
+        .filter-button {
+            padding: 8px 20px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Follow Me Section */
+        .follow-section {
+            background: linear-gradient(135deg, #4d7fff, #0039e6);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .follow-title {
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .follow-text {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .social-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            text-decoration: none;
+            color: white;
+        }
+
+        .social-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icon.facebook { color: #4267B2; }
+        .social-icon.instagram { color: #E1306C; }
+        .social-icon.whatsapp { color: #25D366; }
+        .social-icon.youtube { color: #FF0000; }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-info h3,
+        .contact-item h4 {
+            color: var(--text-primary);
+        }
+
+        .contact-info p,
+        .contact-item p {
+            color: var(--text-secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px var(--shadow-color);
+			text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--bg-card);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+                margin-left: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="http://googleusercontent.com/file_content/1" alt="אוחיון גידור לוגו" onerror="this.onerror=null;this.src='https://i.postimg.cc/RCjk2HnC/logo.jpg';">
+                    <span>אוחיון גידור</span>
+                </div>
+                <div class="nav-actions">
+                    <button id="themeToggle" class="theme-toggle" aria-label="שינוי מצב תצוגה">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#home">ראשי</a></li>
+                        <li><a href="#services">שירותים</a></li>
+                        <li><a href="#about">עלינו</a></li>
+                        <li><a href="#work">גלריית פרויקטים</a></li>
+                        <li><a href="#faq">שאלות ותשובות</a></li>
+                        <li><a href="#follow">עקבו אחרינו</a></li>
+                        <li><a href="#contact">צור קשר</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>השכרה ומכירה גידור זמני</h1>
+                <p>פתרונות גידור משתלמים לכל מטרה</p>
+                <a href="#contact" class="btn btn-primary">צור קשר עכשיו</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">שירותי גידור זמני מותאמים לכל פרויקט</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i> <!-- Icon for industrial needs -->
+                    </div>
+                    <h3 class="service-title">גידור לצרכים תעשייתיים</h3>
+                    <p>פתרונות גדרות יוצאי דופן לפרויקטים תעשייתיים ייחודיים.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i> <!-- Icon for construction sites -->
+                    </div>
+                    <h3 class="service-title">גידור שטחים בתהליכי בנייה</h3>
+                    <p>השכרת גידור מתאים לאבטחת אתרים בשלבי בנייה ופיתוח.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i> <!-- Icon for events -->
+                    </div>
+                    <h3 class="service-title">גידור זמני לאירועים</h3>
+                    <p>מתן פתרונות מקצועיים לארגון אירועים פרטיים וציבוריים עם דגש על ביטחון ונראות.</p>
+                </div>
+                <!-- Adding more service cards to fill the grid, if needed, based on common fencing services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i> <!-- Icon for security -->
+                    </div>
+                    <h3 class="service-title">פתרונות אבטחה</h3>
+                    <p>גידור מאובטח למניעת כניסה בלתי מורשית ושמירה על הסדר.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i> <!-- Icon for delivery/installation -->
+                    </div>
+                    <h3 class="service-title">הובלה והתקנה</h3>
+                    <p>שירותי הובלה והתקנה מקצועיים של הגידור באתר הלקוח.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ruler-combined"></i> <!-- Icon for custom solutions -->
+                    </div>
+                    <h3 class="service-title">התאמה אישית</h3>
+                    <p>פתרונות גידור מותאמים אישית לצרכים ולדרישות הייחודיות של כל פרויקט.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">אוחיון גידור - עלינו</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <!-- Placeholder image for fencing business -->
+                    <img src="https://i.postimg.cc/CMDDH3GP/Whats-App-Image-2025-07-23-at-14-30-44-1.jpg" alt="אוחיון גידור בעבודה">
+                </div>
+                <div class="about-text">
+                    <h3>אנו מתמחים בהשכרת גידור זמני לפרויקטים שונים</h3>
+                    <p>אנו מתמחים בהשכרת גידור זמני לפרויקטים שונים כגון בנייה, אירועים פרטיים וציבוריים, והבטחת ביטחון בשטח. עם מגוון פתרונות מתקדמים ומשתלמים, אנו מספקים ציוד אמין ואיכותי ושומרים על שביעות רצון הלקוח.</p>
+                    <p>הצוות המקצועי שלנו מבטיח התאמה מושלמת לצרכים שלכם. אנו מתחייבים ליחס אישי, שירות מהיר ותודעת מחיר אשר מתאימים לכל תקציב.</p>
+                    <p>אבטחת הסביבה בדרך הכי נוחה ובטוחה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Work Images Section -->
+     <section class="section" id="work">
+        <div class="container">
+            <h2 class="section-title">גלריית פרויקטים</h2>
+
+            <div class="filter-buttons">
+                <button class="filter-button active" data-filter="all">הכל</button>
+                <button class="filter-button" data-filter="construction">בנייה</button>
+                <button class="filter-button" data-filter="events">אירועים</button>
+                <button class="filter-button" data-filter="industrial">תעשייה</button>
+                <button class="filter-button" data-filter="security">אבטחה</button>
+            </div>
+
+            <div class="gallery-container">
+                <div class="gallery-item" data-category="construction">
+                    <img src="https://i.postimg.cc/nzfVHPXr/Whats-App-Image-2025-07-23-at-14-30-45-2.jpg" alt="גידור אתר בנייה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://i.postimg.cc/cH7x6B3m/Whats-App-Image-2025-07-23-at-14-30-45-1.jpg" alt="גידור אירועים">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="industrial">
+                    <img src="https://i.postimg.cc/FzDhVFDk/Whats-App-Image-2025-07-23-at-14-30-45.jpg" alt="גידור אזור תעשייה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="security">
+                    <img src="https://i.postimg.cc/5N24Nv2B/Whats-App-Image-2025-07-23-at-14-32-51.jpg" alt="גידור אבטחה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="construction">
+                    <img src="https://i.postimg.cc/CMDDH3GP/Whats-App-Image-2025-07-23-at-14-30-44-1.jpg" alt="גידור בנייה למגורים">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="https://i.postimg.cc/nzfVHPXr/Whats-App-Image-2025-07-23-at-14-30-45-2.jpg" alt="גידור אירוע פרטי">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="industrial">
+                    <img src="https://i.postimg.cc/ncFzjg0Q/Whats-App-Image-2025-07-23-at-14-30-44.jpg" alt="גידור מתחם אחסון">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="security">
+                    <img src="https://i.postimg.cc/nzfVHPXr/Whats-App-Image-2025-07-23-at-14-30-45-2.jpg" alt="מחסום זמני">
+                    <div class="gallery-overlay">
+                        <div class="gallery-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">שאלות נפוצות</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>לאיזה סוגי פרויקטים אתם מספקים גידור?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>אנו מספקים גידור זמני למגוון רחב של פרויקטים, כולל אתרי בנייה, אירועים פרטיים וציבוריים, פרויקטים תעשייתיים, אבטחת שטחים ועוד.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>האם אתם מציעים גם שירותי התקנה ופירוק?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>בהחלט! אנו מספקים שירות מלא הכולל הובלה, התקנה מקצועית של הגידור באתר הלקוח, וכן פירוק ואיסוף הגידור בתום תקופת ההשכרה.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>מהם אזורי השירות שלכם?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>אנו מספקים שירות בפריסה ארצית, מצפון ועד דרום. צרו קשר לקבלת פרטים נוספים לגבי זמינות באזורכם.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>האם ניתן לרכוש גידור זמני או רק להשכיר?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>אנו מציעים גם שירותי השכרה וגם מכירה של גידור זמני, בהתאם לצרכים ולתקציב שלכם. נשמח לייעץ לכם על האפשרות המתאימה ביותר עבורכם.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>כמה זמן מראש צריך להזמין גידור?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>מומלץ להזמין גידור מוקדם ככל האפשר, במיוחד לפרויקטים גדולים או אירועים מיוחדים, על מנת להבטיח זמינות ולקבוע מועד התקנה נוח. עם זאת, אנו משתדלים לספק מענה מהיר גם להזמנות דחופות.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Follow Me Section -->
+    <section class="section follow-section" id="follow">
+        <div class="container">
+            <h2 class="follow-title">עקבו אחרינו</h2>
+            <p class="follow-text">הישארו מעודכנים בפתרונות הגידור החדשניים שלנו, פרויקטים אחרונים וטיפים מקצועיים באמצעות הרשתות החברתיות:</p>
+
+            <div class="social-grid">
+                <a href="https://www.facebook.com/ohayongidor" class="social-item">
+                    <div class="social-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3>פייסבוק</h3>
+                    <p>עקבו אחרינו לעדכונים ומבצעים</p>
+                </a>
+
+                <a href="https://www.instagram.com/ohayongidor" class="social-item">
+                    <div class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>אינסטגרם</h3>
+                    <p>תמונות מפרויקטים ועבודות</p>
+                </a>
+
+                <a href="https://wa.me/972533324685" class="social-item">
+                    <div class="social-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>וואטסאפ</h3>
+                    <p>שלחו הודעה לתיאום ובירורים</p>
+                </a>
+
+                <a href="https://www.youtube.com/channel/ohayongidor" class="social-item">
+                    <div class="social-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>יוטיוב</h3>
+                    <p>סרטונים והדרכות על פתרונות גידור</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">צור קשר</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>נשמח לענות לכל שאלה</h3>
+                    <p>השאירו פרטים ונחזור אליכם בהקדם, או התקשרו ישירות:</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>טלפון</h4>
+                            <p>0533324685</p>
+							<p>0509211003</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>אימייל</h4>
+                            <p>ohayongidor@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>כתובת</h4>
+                            <p>מושב מצליח, ישראל</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>שעות פעילות</h4>
+                            <p>ראשון עד שישי - 08:00-19:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <!-- Changed from a direct form to a button linking to Google Form -->
+                    <p style="margin-bottom: 1rem;">לשליחת פנייה מסודרת, אנא מלאו את הטופס שלנו בגוגל:</p>
+					<a href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" class="btn btn-primary">מלאו טופס פנייה</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-fence"></i> <!-- Changed icon to a fence -->
+                <span>אוחיון גידור</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ohayongidor" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/ohayongidor" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/972533324685" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.youtube.com/channel/ohayongidor" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright"> כל הזכויות שמורות לאוחיון גידור 2025 ©</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or use OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Set initial theme
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+            htmlElement.classList.add('dark-mode');
+            htmlElement.classList.remove('light-mode');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('light-mode')) {
+                // Switch to dark mode
+                htmlElement.classList.remove('light-mode');
+                htmlElement.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                // Switch to light mode
+                htmlElement.classList.remove('dark-mode');
+                htmlElement.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Navigation toggle for mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                navLinks.classList.remove('active');
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission handler
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Replace alert with a custom message box or console log
+                console.log('תודה על פנייתך! נחזור אליך בהקדם.');
+                // You can add a custom modal/message display here instead of alert
+                alert('תודה על פנייתך! נחזור אליך בהקדם.'); // Keeping alert for now as per original, but note for future improvements.
+                contactForm.reset();
+            });
+        }
+
+        // Gallery filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Add animation on scroll
+        window.addEventListener('scroll', function() {
+            const services = document.querySelectorAll('.service-card');
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const gallery = document.querySelectorAll('.gallery-item');
+            const socialItems = document.querySelectorAll('.social-item');
+
+            const elements = [...services, ...testimonials, ...gallery, ...socialItems];
+
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (position < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = element.classList.contains('social-item')
+                        ? 'translateY(0)'
+                        : element.classList.contains('service-card')
+                            ? 'translateY(0)'
+                            : 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const services = document.querySelectorAll('.service-card');
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const gallery = document.querySelectorAll('.gallery-item');
+            const socialItems = document.querySelectorAll('.social-item');
+
+            const elements = [...services, ...testimonials, ...gallery, ...socialItems];
+
+            elements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = element.classList.contains('social-item')
+                    ? 'translateY(20px)'
+                    : element.classList.contains('service-card')
+                        ? 'translateY(20px)'
+                        : 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>
